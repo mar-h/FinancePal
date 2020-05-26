@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">FinancePal</string>
+    <string name="tab_text_1">Overview</string>
+    <string name="tab_text_2">Add bonds</string>
+    <string name="tab_text_3">Dictionary</string>
+</resources>
