@@ -6,7 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(foreignKeys = [
+@Entity(tableName = "O", foreignKeys = [
     ForeignKey(entity = Transaktion::class,
         parentColumns = ["id"],
         childColumns = ["transId"])

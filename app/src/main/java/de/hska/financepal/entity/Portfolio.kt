@@ -1,23 +1,24 @@
 package de.hska.financepal.entity
 
+import androidx.annotation.NonNull
 import androidx.room.*
 
-@Entity(foreignKeys = [
+@Entity(tableName = "P", foreignKeys = [
     ForeignKey(entity = Benutzer::class,
         parentColumns = ["id"],
-        childColumns = ["userId"])
+        childColumns = ["besitzer"])
 ])
 data class Portfolio(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "id", index = true)
     val portId: Int,
 
-    val budget: Int,
+    val budget: Double?,
 
-    val userId: Int,
+    val besitzer: Int,
 
-    val portfolioWert: Double,
+    val portfolioWert: Double?,
 
-    val rendite: Double
+    val rendite: Double?
 ) {
 }

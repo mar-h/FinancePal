@@ -1,19 +1,20 @@
 package de.hska.financepal.entity
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "B")
 data class Benutzer(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "id", index = true)
     val userId: Int,
 
-    @ColumnInfo (name = "Vorname")
-    val name: String,
+    @ColumnInfo (name = "name")
+    val nachname: String?,
 
-    val vorname: String
+    val vorname: String?
 ) {
 
 }

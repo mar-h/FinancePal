@@ -6,8 +6,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
+import androidx.room.Room
+import de.hska.financepal.db.AppDatabase
 import de.hska.financepal.ui.main.SectionsPagerAdapter
 
 class MainActivity : AppCompatActivity() {

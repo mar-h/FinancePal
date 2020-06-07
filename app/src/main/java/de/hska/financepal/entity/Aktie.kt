@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import java.math.BigDecimal
 import java.util.*
 
-@Entity(foreignKeys = [
+@Entity(tableName = "AK", foreignKeys = [
             ForeignKey(entity = Transaktion::class,
                        parentColumns = ["id"],
                        childColumns = ["transId"])
