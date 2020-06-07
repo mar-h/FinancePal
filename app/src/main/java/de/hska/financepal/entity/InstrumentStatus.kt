@@ -1,18 +1,21 @@
 package de.hska.financepal.entity
 
-import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(foreignKeys = [
+            ForeignKey(entity = Transaktion::class,
+                       parentColumns = ["id"],
+                       childColumns = ["transId"])
+])
 data class InstrumentStatus(
     @PrimaryKey
-    @Embedded
-    val transak: Transaktion,
+    val transId: Int,
 
     val status: StatusType,
 
-    val gesamtWert: Int,
+    val gesamtWert: Double,
 
     val rendite: Double,
 

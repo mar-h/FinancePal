@@ -1,20 +1,22 @@
 package de.hska.financepal.entity
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-@Entity
+@Entity(foreignKeys = [
+    ForeignKey(entity = Benutzer::class,
+        parentColumns = ["id"],
+        childColumns = ["userId"])
+])
 data class Portfolio(
-    @PrimaryKey
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    val portId: Int,
 
     val budget: Int,
 
-    @Embedded
-    val besitzer: Benutzer,
+    val userId: Int,
 
-    val portfolioWert: Int,
+    val portfolioWert: Double,
 
     val rendite: Double
 ) {

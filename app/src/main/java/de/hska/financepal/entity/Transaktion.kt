@@ -1,17 +1,19 @@
 package de.hska.financepal.entity
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import java.util.*
 
-@Entity
+@Entity(foreignKeys = [
+    ForeignKey(entity = Portfolio::class,
+        parentColumns = ["id"],
+        childColumns = ["portId"])
+])
 data class Transaktion(
-    @PrimaryKey
-    val id: Int,
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    val transId: Int,
 
-    @Embedded
-    val portfolio: Portfolio,
+    val portId: Int,
 
     val type: TransakType,
 
@@ -19,7 +21,7 @@ data class Transaktion(
 
     val transDatum: Date,
 
-    val transWert: Int
+    val transWert: Double
 ) {
 }
 

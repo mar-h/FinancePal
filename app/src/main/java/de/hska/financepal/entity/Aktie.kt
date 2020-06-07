@@ -2,21 +2,25 @@ package de.hska.financepal.entity
 
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import java.math.BigDecimal
 import java.util.*
 
-@Entity
+@Entity(foreignKeys = [
+            ForeignKey(entity = Transaktion::class,
+                       parentColumns = ["id"],
+                       childColumns = ["transId"])
+])
 data class Aktie(
     @PrimaryKey
     val isin: String,
 
-    @Embedded
-    val transID: Transaktion,
+    val transId: Transaktion,
 
     val name: String,
 
-    val kurs: BigDecimal,
+    val kurs: Double,
 
     val hauptversammlung: Date,
 
