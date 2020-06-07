@@ -22,6 +22,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager)
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
+        // Jeweils Tabs (Fragmente) entsprechend der Position zurück geben
         if (position == 0)
             return tab1()
         if (position == 1)
@@ -36,7 +37,6 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager)
     }
 
     override fun getCount(): Int {
-        // Show 2 total pages.
-        return 3
+        return TAB_TITLES.size
     }
 }

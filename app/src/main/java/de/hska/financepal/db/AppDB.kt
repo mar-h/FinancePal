@@ -3,9 +3,9 @@ package de.hska.financepal.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
-@Database
+/* @Database
 abstract class AppDB : RoomDatabase() {
     abstract fun() {
 
     }
-}
+} */
