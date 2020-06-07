@@ -2,16 +2,19 @@ package de.hska.financepal.entity
 
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity
-data class Optionsschein(
+@Entity(foreignKeys = [
+    ForeignKey(entity = Transaktion::class,
+        parentColumns = ["id"],
+        childColumns = ["transId"])
+])data class Optionsschein(
     @PrimaryKey
     val isin: String,
 
-    @Embedded
-    val TransId: Transaktion,
+    val transId: Transaktion,
 
     val typ: Optionstyp,
 

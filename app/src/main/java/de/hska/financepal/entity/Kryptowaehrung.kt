@@ -2,15 +2,18 @@ package de.hska.financepal.entity
 
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity
-data class Kryptowaehrung(
-    @PrimaryKey
-    val id: Int,
+@Entity(foreignKeys = [
+    ForeignKey(entity = Transaktion::class,
+        parentColumns = ["id"],
+        childColumns = ["transId"])
+])data class Kryptowaehrung(
+    @PrimaryKey(autoGenerate = true)
+    val KryptId: Int,
 
-    @Embedded
-    val TransId: Transaktion,
+    val transId: Transaktion,
 
     val kurs: Double
 ) {

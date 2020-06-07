@@ -1,16 +1,18 @@
 package de.hska.financepal.entity
 
-import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity
-data class Rohstoff(
-    @PrimaryKey
-    val id: Int,
+@Entity(foreignKeys = [
+    ForeignKey(entity = Transaktion::class,
+        parentColumns = ["id"],
+        childColumns = ["transId"])
+])data class Rohstoff(
+    @PrimaryKey(autoGenerate = true)
+    val RohId: Int,
 
-    @Embedded
-    val TransId: Transaktion,
+    val transId: Transaktion,
 
     val kurs: Double
 ) {
