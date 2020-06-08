@@ -23,7 +23,7 @@ data class Transaktion(
 
     val menge: Int,
 
-    val transDatum: Date?,
+    val transDatum: String?,
 
     val transWert: Double?
 ) {

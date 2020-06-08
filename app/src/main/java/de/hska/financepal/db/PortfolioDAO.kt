@@ -12,7 +12,7 @@ interface PortfolioDAO {
     @Query("SELECT * FROM P WHERE id = :portId")
     fun getPortfolioById(portId: Int): LiveData<Portfolio>
 
-    @Query("SELECT * FROM P WHERE besitzer = :userId")
+    @Query("SELECT * FROM P WHERE userId = :userId")
     fun getPortfolioByBesitzer(userId: Int): LiveData<Portfolio>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

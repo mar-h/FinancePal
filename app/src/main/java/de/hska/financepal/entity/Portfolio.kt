@@ -7,7 +7,7 @@ import androidx.room.ForeignKey.CASCADE
 @Entity(tableName = "P", foreignKeys = [
     ForeignKey(entity = Benutzer::class,
         parentColumns = ["id"],
-        childColumns = ["besitzer"],
+        childColumns = ["userId"],
         onDelete = CASCADE)
 ])
 data class Portfolio(
@@ -18,7 +18,7 @@ data class Portfolio(
 
     val budget: Double?,
 
-    val besitzer: Int,
+    val userId: Int,
 
     val portfolioWert: Double?,
 
