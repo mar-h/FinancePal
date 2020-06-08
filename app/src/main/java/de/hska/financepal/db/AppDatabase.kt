@@ -16,7 +16,7 @@ import de.hska.financepal.entity.Transaktion
 abstract class AppDatabase : RoomDatabase() {
     abstract fun benutzerDAO(): BenutzerDAO
     abstract fun portfolioDAO(): PortfolioDAO
-    abstract fun transationDAO(): TransaktionDAO
+    abstract fun transaktionDAO(): TransaktionDAO
 
     companion object {
 
