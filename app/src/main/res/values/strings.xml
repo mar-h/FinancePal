@@ -5,6 +5,9 @@
     <string name="tab_text_3">Dictionary</string>
 
     <!-- TODO: Hier können zentral Strings definiert werden -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="inhalt1">Hier jeweils den Inhalt einfügen (Tab 1 Overview)</string>
+    <string name="inhalt2">Platzhalter für Tab 2</string>
+    <string name="inhalt3">Platzhalter Dictionary Tab</string>
+
 </resources>
