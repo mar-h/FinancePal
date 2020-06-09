@@ -3,6 +3,10 @@
     <string name="tab_text_1">Overview</string>
     <string name="tab_text_2">Add bonds</string>
     <string name="tab_text_3">Dictionary</string>
+    <string name="add_bond">Bonds</string>
+    <string name="hint_bond">Bond…</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Instrument nicht gespeichert, weil es leer ist.</string>
 
     <!-- TODO: Hier können zentral Strings definiert werden -->
 
