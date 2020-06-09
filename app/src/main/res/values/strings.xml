@@ -10,4 +10,9 @@
     <string name="inhalt2">Platzhalter für Tab 2</string>
     <string name="inhalt3">Platzhalter Dictionary Tab</string>
 
+    <string name="aktien">Aktien\nPlatzhaltertext</string>
+    <string name="anleihen">Anleihen\nPlatzhaltertext</string>
+    <string name="rohstoffe">Rohstoffe\nPlatzhaltertext</string>
+    <string name="edelmetalle">Edelmetalle\nPlatzhaltertext</string>
+    <string name="krypto">Kryptowährungen\nPlatzhaltertext</string>
 </resources>

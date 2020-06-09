@@ -5,4 +5,5 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="darkModeText">#BBBBBB</color>
     <color name="darkModeBackground">#252525</color>
+    <color name="darkModeBackgroundheller">#292929</color>
 </resources>
