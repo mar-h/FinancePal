@@ -14,5 +14,16 @@
     <string name="anleihen">Anleihen\nPlatzhaltertext</string>
     <string name="rohstoffe">Rohstoffe\nPlatzhaltertext</string>
     <string name="edelmetalle">Edelmetalle\nPlatzhaltertext</string>
+    <string name="optionsscheine">Optionsscheine\nPlatzhaltertext</string>
     <string name="krypto">Kryptowährungen\nPlatzhaltertext</string>
+    <string name="anlegen">Please specify the product you want to add:</string>
+
+    <string-array name="dropdown1">
+        <item>Aktien</item>
+        <item>Anleihen</item>
+        <item>Rohstoffe</item>
+        <item>Edelmetalle</item>
+        <item>Optionsscheine</item>
+        <item>Kryptowährungen</item>
+    </string-array>
 </resources>
