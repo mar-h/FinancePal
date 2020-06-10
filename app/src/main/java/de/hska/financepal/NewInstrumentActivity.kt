@@ -3,14 +3,19 @@ package de.hska.financepal
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.room.Room
 import de.hska.financepal.db.AppDatabase
+import de.hska.financepal.db.InstrumentDao
 import de.hska.financepal.entity.Instrument
+import kotlinx.android.synthetic.main.content_main.*
 
 class NewInstrumentActivity : AppCompatActivity() {
 
+    private lateinit var db: AppDatabase
+    private lateinit var instrumentDao: InstrumentDao
     private lateinit var typ: EditText
     private lateinit var name: EditText
     private lateinit var kurs: EditText
@@ -21,33 +26,25 @@ class NewInstrumentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_instrument)
 
-        val db: AppDatabase = Room.databaseBuilder(applicationContext, AppDatabase::class.java,
-            "FiPal")
-            .allowMainThreadQueries()
-            .build()
-
-        db.instrumentDao().deleteAll()
+        db = AppDatabase.getDatabase(this)
+        instrumentDao = db?.instrumentDao()
 
         typ = findViewById(R.id.edit_bond)
         name = findViewById(R.id.edit_name)
         kurs = findViewById(R.id.edit_name)
         wert = findViewById(R.id.edit_wert)
-        button = findViewById<Button>(R.id.button_save)
+        button = findViewById(R.id.button_save)
 
-        val instrument = Instrument(1, "8B1R23", "Aktie", 883.00,44150.00)
-
+        val instrument = Instrument(1, "8B1R23", "Aktie", "883.00","44150.00")
         db.instrumentDao().insert(instrument)
 
-        button.setOnClickListener {
 
-            val instrument = Instrument(99, typ.text.toString(), name.text.toString(), kurs.text.toString().toDouble(),
-            wert.text.toString().toDouble())
-            db.instrumentDao().insert(instrument)
+
+        button.setOnClickListener {
+            val eingabe = Instrument(2, typ.text.toString(), name.text.toString(),
+                kurs.text.toString(), wert.text.toString())
+            instrumentDao.insert(eingabe)
             startActivity(Intent(this@NewInstrumentActivity, MainActivity::class.java))
         }
-    }
-
-    companion object {
-
     }
 }

@@ -10,13 +10,13 @@ import de.hska.financepal.entity.Instrument
 @Dao
 interface InstrumentDao {
 
-    @Query("SELECT * FROM INST ORDER BY id ASC")
+    @Query("SELECT * FROM Inst")
     fun getAllInstruments(): List<Instrument>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(instrument: Instrument)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertALL(instruments: List<Instrument>)
 
     @Query("DELETE FROM INST")

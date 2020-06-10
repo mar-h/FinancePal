@@ -10,15 +10,15 @@ import de.hska.financepal.R
 import de.hska.financepal.entity.Instrument
 
 class InstrumentListAdapter internal constructor(
+    val instruments: List<Instrument>,
     context: Context
 ) : RecyclerView.Adapter<InstrumentListAdapter.InstrumentViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var instruments = emptyList<Instrument>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstrumentViewHolder {
-        val itemView = inflater.inflate(R.layout.instrument_row, parent, false)
-        return InstrumentViewHolder(itemView)
+        val view = inflater.inflate(R.layout.instrument_row, parent, false)
+        return InstrumentViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: InstrumentViewHolder, position: Int) {
@@ -36,6 +36,5 @@ class InstrumentListAdapter internal constructor(
         val name: TextView = itemView.findViewById(R.id.name)
         val kurs: TextView = itemView.findViewById(R.id.kurs)
         val wert: TextView = itemView.findViewById(R.id.wert)
-        // val instrumentItemView: TextView = itemView.findViewById(R.id.textView)
     }
 }

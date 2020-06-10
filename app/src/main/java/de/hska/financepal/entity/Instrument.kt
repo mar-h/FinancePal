@@ -25,10 +25,10 @@ data class Instrument(
    // val anzahl: Int?,
 
     @ColumnInfo(name = "kurs")
-    val kurs: Double?,
+    val kurs: String?,
 
     @ColumnInfo(name = "wert")
-    val wert: Double?
+    val wert: String?
 
    // val curr: String?,
 
