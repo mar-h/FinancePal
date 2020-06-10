@@ -16,24 +16,26 @@ class InstrumentListAdapter internal constructor(
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var instruments = emptyList<Instrument>()
 
-    inner class InstrumentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val instrumentItemView: TextView = itemView.findViewById(R.id.textView)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InstrumentViewHolder {
-        val itemView = inflater.inflate(R.layout.recyclerview_item, parent, false)
+        val itemView = inflater.inflate(R.layout.instrument_row, parent, false)
         return InstrumentViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: InstrumentViewHolder, position: Int) {
         val current = instruments[position]
-        holder.instrumentItemView.text = current.name
-    }
-
-    internal fun setInstruments(instruments: List<Instrument>) {
-        this.instruments = instruments
-        notifyDataSetChanged()
+        holder.typ.text = current.typ
+        holder.name.text = current.name
+        holder.kurs.text = current.kurs.toString()
+        holder.wert.text = current.wert.toString()
     }
 
     override fun getItemCount() = instruments.size
+
+    inner class InstrumentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val typ: TextView = itemView.findViewById(R.id.typ)
+        val name: TextView = itemView.findViewById(R.id.name)
+        val kurs: TextView = itemView.findViewById(R.id.kurs)
+        val wert: TextView = itemView.findViewById(R.id.wert)
+        // val instrumentItemView: TextView = itemView.findViewById(R.id.textView)
+    }
 }

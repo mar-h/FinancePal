@@ -11,11 +11,14 @@ import de.hska.financepal.entity.Instrument
 interface InstrumentDao {
 
     @Query("SELECT * FROM INST ORDER BY id ASC")
-    fun getAllInstruments(): LiveData<List<Instrument>>
+    fun getAllInstruments(): List<Instrument>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(instrument: Instrument)
+    fun insert(instrument: Instrument)
+
+    @Insert
+    fun insertALL(instruments: List<Instrument>)
 
     @Query("DELETE FROM INST")
-    suspend fun deleteAll()
+    fun deleteAll()
 }

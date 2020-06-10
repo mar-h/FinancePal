@@ -1,19 +1,78 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/edit_bond"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_bond"
-        android:inputType="textAutoComplete"
-        android:layout_margin="@dimen/big_padding"
+        android:text="Neues Finanzinstrument: "
         android:textSize="18sp" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_bond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/min_height"
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/hint_bond"
+            android:inputType="textAutoComplete"
+            android:layout_margin="@dimen/big_padding"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/min_height"
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/hint_name"
+            android:inputType="textAutoComplete"
+            android:layout_margin="@dimen/big_padding"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_kurs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/min_height"
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/hint_kurs"
+            android:inputType="textAutoComplete"
+            android:layout_margin="@dimen/big_padding"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_wert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/min_height"
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/hint_wert"
+            android:inputType="textAutoComplete"
+            android:layout_margin="@dimen/big_padding"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:id="@+id/button_save"
         android:layout_width="match_parent"

@@ -9,12 +9,12 @@ import de.hska.financepal.entity.Instrument
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Instrument::class], version = 1, exportSchema = false)
+@Database(entities = [Instrument::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun instrumentDao(): InstrumentDao
 
-    private class AppDatabaseCallback(
+   /* private class AppDatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
         override fun onOpen(db: SupportSQLiteDatabase) {
@@ -63,5 +63,5 @@ abstract class AppDatabase : RoomDatabase() {
                 instance
             }
         }
-    }
+    }*/
 }

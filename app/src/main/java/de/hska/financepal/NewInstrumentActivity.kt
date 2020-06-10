@@ -1,37 +1,53 @@
 package de.hska.financepal
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import androidx.room.Room
+import de.hska.financepal.db.AppDatabase
+import de.hska.financepal.entity.Instrument
 
 class NewInstrumentActivity : AppCompatActivity() {
 
-    private lateinit var editInstrumentView: EditText
+    private lateinit var typ: EditText
+    private lateinit var name: EditText
+    private lateinit var kurs: EditText
+    private lateinit var wert: EditText
+    private lateinit var button: Button
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_instrument)
-        editInstrumentView = findViewById(R.id.edit_bond)
 
-        val button = findViewById<Button>(R.id.button_save)
+        val db: AppDatabase = Room.databaseBuilder(applicationContext, AppDatabase::class.java,
+            "FiPal")
+            .allowMainThreadQueries()
+            .build()
+
+        db.instrumentDao().deleteAll()
+
+        typ = findViewById(R.id.edit_bond)
+        name = findViewById(R.id.edit_name)
+        kurs = findViewById(R.id.edit_name)
+        wert = findViewById(R.id.edit_wert)
+        button = findViewById<Button>(R.id.button_save)
+
+        val instrument = Instrument(1, "8B1R23", "Aktie", 883.00,44150.00)
+
+        db.instrumentDao().insert(instrument)
+
         button.setOnClickListener {
-            val replyIntent = Intent()
-            if (TextUtils.isEmpty(editInstrumentView.text)) {
-                setResult(Activity.RESULT_CANCELED, replyIntent)
-            } else {
-                val instrument = editInstrumentView.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, instrument)
-                setResult(Activity.RESULT_OK, replyIntent)
-            }
-            finish()
+
+            val instrument = Instrument(99, typ.text.toString(), name.text.toString(), kurs.text.toString().toDouble(),
+            wert.text.toString().toDouble())
+            db.instrumentDao().insert(instrument)
+            startActivity(Intent(this@NewInstrumentActivity, MainActivity::class.java))
         }
     }
 
     companion object {
-        const val EXTRA_REPLY = "com.example.android.instrumentlistsql.REPLY"
+
     }
 }
