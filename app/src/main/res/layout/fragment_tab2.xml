@@ -10,18 +10,18 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="277dp"
-        android:layout_height="21dp"
+        android:layout_width="293dp"
+        android:layout_height="33dp"
         android:hapticFeedbackEnabled="false"
         android:text="@string/anlegen"
         android:textColor="@color/darkModeText"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintVertical_bias="0.068" />
 
     <Spinner
         android:id="@+id/spinner1"
@@ -43,9 +43,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="128dp"
+        android:autoText="false"
         android:ems="10"
+        android:hint="Name"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="@color/darkModeText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner1" />
@@ -57,8 +59,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="Anzahl"
+        android:importantForAutofill="no"
         android:inputType="number"
-        android:text="Anzahl"
         android:textColor="@color/darkModeText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
@@ -70,8 +73,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="Kurs"
+        android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        android:text="Kurs"
         android:textColor="@color/darkModeText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />

@@ -18,9 +18,11 @@
 
             <TextView
                 android:id="@+id/textView13"
-                android:layout_width="364dp"
+                android:layout_width="0dp"
                 android:layout_height="120dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
                 android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
                 android:text="@string/aktien"
@@ -32,9 +34,11 @@
 
             <TextView
                 android:id="@+id/textView18"
-                android:layout_width="367dp"
+                android:layout_width="0dp"
                 android:layout_height="112dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
                 android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
                 android:text="@string/anleihen"
@@ -46,9 +50,11 @@
 
             <TextView
                 android:id="@+id/textView19"
-                android:layout_width="367dp"
+                android:layout_width="0dp"
                 android:layout_height="112dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
                 android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
                 android:text="@string/rohstoffe"
@@ -60,9 +66,11 @@
 
             <TextView
                 android:id="@+id/textView20"
-                android:layout_width="367dp"
+                android:layout_width="0dp"
                 android:layout_height="112dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
                 android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
                 android:text="@string/edelmetalle"
@@ -74,9 +82,11 @@
 
             <TextView
                 android:id="@+id/textView21"
-                android:layout_width="367dp"
+                android:layout_width="0dp"
                 android:layout_height="112dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
                 android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
                 android:text="@string/optionsscheine"
@@ -88,9 +98,11 @@
 
             <TextView
                 android:id="@+id/textView22"
-                android:layout_width="367dp"
+                android:layout_width="0dp"
                 android:layout_height="112dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
                 android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
                 android:text="@string/krypto"
