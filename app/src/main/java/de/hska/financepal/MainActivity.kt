@@ -4,11 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -22,37 +24,36 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var db: AppDatabase
     private lateinit var instrumentDao: InstrumentDao
+    private lateinit var instruments: List<Instrument>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         val anleihe = Instrument(18, "Anleihe",
-                                        "Argentinien", "39.16"," 177880.00")
+            "Argentinien", "39.16"," 177880.00")
+        val aktie = Instrument(19, "Aktie", "Daimler", "69.65", "120450.80")
+        val gold = Instrument(20, "Rohstoff", "Gold", "1698.77", "87439.79")
+        instruments = emptyList()
+        instruments.toMutableList().addAll(listOf(anleihe,aktie,gold))
+        instruments.toList<Instrument>()
+        val adapter = InstrumentListAdapter(this)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val instruments: List<Instrument> = emptyList()
-        instruments.toMutableList().addAll(listOf(anleihe, anleihe, anleihe))
 
         db = AppDatabase.getDatabase(this)
         instrumentDao = db.instrumentDao()
-
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = InstrumentListAdapter(instruments,this)
-        recyclerView.adapter = adapter
-        instrumentDao.getAllInstruments()
+        instrumentDao.insertALL(instruments)
 
 
         val fab2 = findViewById<FloatingActionButton>(R.id.fab2)
         fab2.setOnClickListener {
             val intent = Intent(this@MainActivity, NewInstrumentActivity::class.java)
             startActivityForResult(intent, Activity.RESULT_OK)
-            @Override
-            fun onClick(view: View) {
-                startActivity(Intent(this@MainActivity, NewInstrumentActivity::class.java))
-            }
         }
-
 
         /*val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
@@ -65,5 +66,9 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Teile dein Portfolio mit deinen Freunden", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }*/
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

@@ -10,8 +10,7 @@ import java.util.*
 @Entity(tableName = "Inst")
 data class Instrument(
     @PrimaryKey(autoGenerate = true)
-    @NonNull
-    val id: Int,
+    val id: Int = 0,
 
    // val isin: String?,
     @ColumnInfo(name = "typ")

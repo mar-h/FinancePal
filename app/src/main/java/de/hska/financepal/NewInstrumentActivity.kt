@@ -1,5 +1,6 @@
 package de.hska.financepal
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +11,6 @@ import androidx.room.Room
 import de.hska.financepal.db.AppDatabase
 import de.hska.financepal.db.InstrumentDao
 import de.hska.financepal.entity.Instrument
-import kotlinx.android.synthetic.main.content_main.*
 
 class NewInstrumentActivity : AppCompatActivity() {
 
@@ -26,25 +26,35 @@ class NewInstrumentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_instrument)
 
-        db = AppDatabase.getDatabase(this)
-        instrumentDao = db?.instrumentDao()
-
-        typ = findViewById(R.id.edit_bond)
-        name = findViewById(R.id.edit_name)
-        kurs = findViewById(R.id.edit_name)
-        wert = findViewById(R.id.edit_wert)
+        typ = findViewById(R.id.typ)
+        name = findViewById(R.id.name)
+        kurs = findViewById(R.id.kurs)
+        wert = findViewById(R.id.wert)
         button = findViewById(R.id.button_save)
-
-        val instrument = Instrument(1, "8B1R23", "Aktie", "883.00","44150.00")
-        db.instrumentDao().insert(instrument)
-
-
+        db = AppDatabase.getDatabase(this)
 
         button.setOnClickListener {
-            val eingabe = Instrument(2, typ.text.toString(), name.text.toString(),
-                kurs.text.toString(), wert.text.toString())
-            instrumentDao.insert(eingabe)
-            startActivity(Intent(this@NewInstrumentActivity, MainActivity::class.java))
+
+            val typ = typ.text.toString()
+            val name = name.text.toString()
+            val kurs = kurs.text.toString()
+            val wert = wert.text.toString()
+
+            val data = Intent()
+            data.putExtra("typ",typ)
+            data.putExtra("name", name)
+            data.putExtra("kurs", kurs)
+            data.putExtra("wert", wert)
+            val id = intent.getIntExtra("id", -1)
+            if (id !=-1) {
+                data.putExtra("id", id)
+            }
+
+            db.instrumentDao().insert(Instrument(id, name, typ, kurs, wert))
+            Log.wtf("NewInstrumentActivity", "saveButton $typ $name $kurs $wert")
+            setResult(Activity.RESULT_OK, data)
+            startActivity(Intent(this@NewInstrumentActivity, MainActivity::class.java ))
+            finish()
         }
     }
 }
