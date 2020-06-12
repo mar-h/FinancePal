@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -19,6 +20,7 @@ import de.hska.financepal.db.InstrumentDao
 import de.hska.financepal.db.InstrumentListAdapter
 import de.hska.financepal.entity.Instrument
 import de.hska.financepal.ui.main.SectionsPagerAdapter
+import kotlinx.android.synthetic.main.instrument_row.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,16 +34,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        val anleihe = Instrument(18, "Anleihe",
-            "Argentinien", "39.16"," 177880.00")
+        val anleihe = Instrument(18, "Anleihe","Argentinien", "39.16"," 177880.00")
         val aktie = Instrument(19, "Aktie", "Daimler", "69.65", "120450.80")
         val gold = Instrument(20, "Rohstoff", "Gold", "1698.77", "87439.79")
         instruments = emptyList()
         instruments.toMutableList().addAll(listOf(anleihe,aktie,gold))
-        instruments.toList<Instrument>()
+        instruments.toList()
         val adapter = InstrumentListAdapter(this)
+        adapter.setInstruments(instruments)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter.setInstruments(instruments)
 
 
         db = AppDatabase.getDatabase(this)
@@ -66,9 +69,5 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Teile dein Portfolio mit deinen Freunden", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }*/
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
     }
 }
