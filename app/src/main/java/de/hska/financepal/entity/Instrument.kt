@@ -12,16 +12,16 @@ data class Instrument(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-   // val isin: String?,
+    // val isin: String?,
     @ColumnInfo(name = "typ")
     val typ: String?,
 
     @ColumnInfo(name = "name")
     val name: String?,
 
-   // val kaufwert: Double?,
+    // val kaufwert: Double?,
 
-   // val anzahl: Int?,
+    // val anzahl: Int?,
 
     @ColumnInfo(name = "kurs")
     val kurs: String?,
@@ -29,7 +29,7 @@ data class Instrument(
     @ColumnInfo(name = "wert")
     val wert: String?
 
-   // val curr: String?,
+    // val curr: String?,
 
     // val rendite: Double?
 ) {

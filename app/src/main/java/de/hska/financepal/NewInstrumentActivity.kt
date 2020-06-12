@@ -10,6 +10,7 @@ import android.widget.EditText
 import androidx.room.Room
 import de.hska.financepal.db.AppDatabase
 import de.hska.financepal.db.InstrumentDao
+import de.hska.financepal.db.InstrumentListAdapter
 import de.hska.financepal.entity.Instrument
 
 class NewInstrumentActivity : AppCompatActivity() {
@@ -50,8 +51,10 @@ class NewInstrumentActivity : AppCompatActivity() {
                 data.putExtra("id", id)
             }
 
-            db.instrumentDao().insert(Instrument(id, name, typ, kurs, wert))
-            Log.wtf("NewInstrumentActivity", "saveButton $typ $name $kurs $wert")
+            // db.instrumentDao().insert(Instrument(id, name, typ, kurs, wert))
+            Log.wtf("NewInstrumentActivity", "Finanzinstrument: $typ $name $kurs $wert")
+            val adapter = InstrumentListAdapter(this)
+            adapter.notifyDataSetChanged()
             setResult(Activity.RESULT_OK, data)
             startActivity(Intent(this@NewInstrumentActivity, MainActivity::class.java ))
             finish()

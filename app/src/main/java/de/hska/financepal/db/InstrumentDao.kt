@@ -16,7 +16,7 @@ interface InstrumentDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(instrument: Instrument)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertALL(instruments: List<Instrument>)
 
     @Query("DELETE FROM INST")

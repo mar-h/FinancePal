@@ -34,23 +34,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        val anleihe = Instrument(18, "Anleihe","Argentinien", "39.16"," 177880.00")
-        val aktie = Instrument(19, "Aktie", "Daimler", "69.65", "120450.80")
-        val gold = Instrument(20, "Rohstoff", "Gold", "1698.77", "87439.79")
-        instruments = emptyList()
-        instruments.toMutableList().addAll(listOf(anleihe,aktie,gold))
-        instruments.toList()
+        val anleihe = Instrument( 1,"Anleihe","Argentinien", "39.16"," 177880.00")
+        val aktie = Instrument( 2, "Aktie", "Daimler", "69.65", "120450.80")
+        val gold = Instrument(3, "Rohstoff", "Gold", "1698.77", "87439.79")
+        instruments = listOf(anleihe,aktie,gold)
         val adapter = InstrumentListAdapter(this)
         adapter.setInstruments(instruments)
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter.setInstruments(instruments)
-
 
         db = AppDatabase.getDatabase(this)
         instrumentDao = db.instrumentDao()
-        instrumentDao.insertALL(instruments)
-
+        // instrumentDao.insertALL(instruments)
+        // recyclerView.showContextMenu()
 
         val fab2 = findViewById<FloatingActionButton>(R.id.fab2)
         fab2.setOnClickListener {
@@ -62,12 +59,32 @@ class MainActivity : AppCompatActivity() {
         val viewPager: ViewPager = findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
-        tabs.setupWithViewPager(viewPager)
+        tabs.setupWithViewPager(viewPager)*/
         val fab: FloatingActionButton = findViewById(R.id.fab)
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Teile dein Portfolio mit deinen Freunden", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-        }*/
+        }
     }
+
+/*
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        setContentView(R.layout.activity_main)
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        val instrument = Instrument(data!!.getIntExtra("id", -1),
+            data.getStringExtra("typ"),
+            data.getStringExtra("name"),
+            data.getStringExtra("kurs"),
+            data.getStringExtra("wert"))
+
+        var instruments: List<Instrument>
+        instruments = listOf(instrument)
+        val adapter = InstrumentListAdapter(this)
+        adapter.setInstruments(instruments)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+*/
 }

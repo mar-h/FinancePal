@@ -34,8 +34,7 @@ class InstrumentListAdapter internal constructor(
     }
     internal fun setInstrument(instrument: Instrument) {
         this.instruments.toMutableList().add(instrument)
-        this.instruments.toList()
-        notifyDataSetChanged()
+        notifyItemInserted(instruments.size -1)
     }
 
     override fun getItemCount() = instruments.size
