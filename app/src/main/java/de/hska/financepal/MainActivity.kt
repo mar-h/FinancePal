@@ -33,19 +33,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        db = AppDatabase.getDatabase(this)
+        instrumentDao = db.instrumentDao()
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        val anleihe = Instrument( 1,"Anleihe","Argentinien", "39.16"," 177880.00")
+        /*val anleihe = Instrument( 1,"Anleihe","Argentinien", "39.16"," 177880.00")
         val aktie = Instrument( 2, "Aktie", "Daimler", "69.65", "120450.80")
-        val gold = Instrument(3, "Rohstoff", "Gold", "1698.77", "87439.79")
-        instruments = listOf(anleihe,aktie,gold)
+        val gold = Instrument(3, "Rohstoff", "Gold", "1698.77", "87439.79")*/
+        instruments = instrumentDao.getAllInstruments()
         val adapter = InstrumentListAdapter(this)
         adapter.setInstruments(instruments)
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        db = AppDatabase.getDatabase(this)
-        instrumentDao = db.instrumentDao()
+
         // instrumentDao.insertALL(instruments)
         // recyclerView.showContextMenu()
 

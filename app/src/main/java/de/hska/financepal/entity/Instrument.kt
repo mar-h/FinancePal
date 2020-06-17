@@ -9,9 +9,6 @@ import java.util.*
 
 @Entity(tableName = "Inst")
 data class Instrument(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-
     // val isin: String?,
     @ColumnInfo(name = "typ")
     val typ: String?,
@@ -33,6 +30,8 @@ data class Instrument(
 
     // val rendite: Double?
 ) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
 
     override fun equals(other: Any?): Boolean {
         return super.equals(other)

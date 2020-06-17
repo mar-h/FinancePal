@@ -53,8 +53,8 @@ class NewInstrumentActivity : AppCompatActivity() {
 
             // db.instrumentDao().insert(Instrument(id, name, typ, kurs, wert))
             Log.wtf("NewInstrumentActivity", "Finanzinstrument: $typ $name $kurs $wert")
-            val adapter = InstrumentListAdapter(this)
-            adapter.notifyDataSetChanged()
+            instrumentDao = db.instrumentDao()
+            instrumentDao.insert(Instrument(typ, name, kurs, wert))
             setResult(Activity.RESULT_OK, data)
             startActivity(Intent(this@NewInstrumentActivity, MainActivity::class.java ))
             finish()
