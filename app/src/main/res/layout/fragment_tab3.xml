@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/darkModeBackground"
     tools:context=".ui.main.tab1">
 
@@ -17,100 +18,206 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/textViewRohstoffeTitle"
+                style="@style/customTextView"
+
                 android:layout_width="0dp"
-                android:layout_height="120dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@color/darkModeBackgroundheller"
+                android:text="@string/rohstoffe_title"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewOptionsscheineText" />
+
+            <TextView
+                android:id="@+id/textViewAktienTitle"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                style="@style/customTextView"
+
                 android:hapticFeedbackEnabled="false"
-                android:text="@string/aktien"
-                android:textColor="@color/darkModeText"
+                android:text="@string/aktien_title"
+                android:textAlignment="textStart"
+                android:textSize="24sp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/textViewAktienText"
+                style="@style/customTextView"
                 android:layout_width="0dp"
-                android:layout_height="112dp"
+                android:layout_height="150dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
-                android:text="@string/anleihen"
-                android:textColor="@color/darkModeText"
-                android:visibility="visible"
+                android:text="@string/aktien_text"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewAktienTitle" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/textViewAnleihenTitle"
                 android:layout_width="0dp"
-                android:layout_height="112dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
-                android:text="@string/rohstoffe"
-                android:textColor="@color/darkModeText"
+                android:text="@string/anleihen_title"
+                style="@style/customTextView"
+                android:textSize="24sp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewAktienText" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/textViewAnleihenText"
+                style="@style/customTextView"
                 android:layout_width="0dp"
-                android:layout_height="112dp"
+                android:layout_height="150dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
-                android:text="@string/edelmetalle"
-                android:textColor="@color/darkModeText"
-                android:visibility="visible"
+                android:text="@string/anleihen_text"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewAnleihenTitle" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/textViewOptionsscheineTitle"
+                style="@style/customTextView"
                 android:layout_width="0dp"
-                android:layout_height="112dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@color/darkModeBackgroundheller"
                 android:hapticFeedbackEnabled="false"
-                android:text="@string/optionsscheine"
-                android:textColor="@color/darkModeText"
+                android:text="@string/optionsscheine_title"
+                android:textSize="24sp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewAnleihenText" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/textViewOptionsscheineText"
+                style="@style/customTextView"
                 android:layout_width="0dp"
-                android:layout_height="112dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:hapticFeedbackEnabled="false"
+                android:text="@string/optionsscheine_text"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewOptionsscheineTitle" />
+
+            <TextView
+                android:id="@+id/textViewRohstoffeText"
+                style="@style/customTextView"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/rohstoffe_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRohstoffeTitle"
+                tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textViewKryptoTitle"
+                style="@style/customTextView"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@color/darkModeBackgroundheller"
-                android:hapticFeedbackEnabled="false"
-                android:text="@string/krypto"
-                android:textColor="@color/darkModeText"
-                android:visibility="visible"
+                android:text="@string/krypto_title"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewRohstoffeText" />
+
+            <TextView
+                android:id="@+id/textViewKryptoText"
+                style="@style/customTextView"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/krypto_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewKryptoTitle"
+                tools:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/imageButtonAktien"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_down"
+                app:layout_constraintEnd_toEndOf="@+id/textViewAktienTitle"
+                app:layout_constraintTop_toTopOf="@+id/textViewAktienTitle" />
+
+            <ImageButton
+                android:id="@+id/imageButtonAnleihe"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_down"
+                app:layout_constraintEnd_toEndOf="@+id/textViewAnleihenTitle"
+                app:layout_constraintTop_toTopOf="@+id/textViewAnleihenTitle" />
+
+            <ImageButton
+                android:id="@+id/imageButtonOption"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_down"
+                app:layout_constraintEnd_toEndOf="@+id/textViewOptionsscheineTitle"
+                app:layout_constraintTop_toTopOf="@+id/textViewOptionsscheineTitle" />
+
+            <ImageButton
+                android:id="@+id/imageButtonRohsstoffe"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_down"
+                app:layout_constraintEnd_toEndOf="@+id/textViewRohstoffeTitle"
+                app:layout_constraintTop_toTopOf="@+id/textViewRohstoffeTitle" />
+
+            <ImageButton
+                android:id="@+id/imageButtonKrypto"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_down"
+                app:layout_constraintEnd_toEndOf="@+id/textViewKryptoTitle"
+                app:layout_constraintTop_toTopOf="@+id/textViewKryptoTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
