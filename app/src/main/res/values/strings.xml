@@ -17,4 +17,47 @@
     <string name="inhalt2">Platzhalter für Tab 2</string>
     <string name="inhalt3">Platzhalter Dictionary Tab</string>
 
+    <string name="aktien_text">
+        \n-Anteil eines Unternehmens (Aktiengesellschaft) je nach dem wie viele Aktien ausgeschüttet werden
+        \n-Wert der Aktie entspricht dem Kurs
+        \n-Kurs ist durch Angebot und Nachfrage bestimmt
+        \n-man kann entweder durch steigende Kurse oder durch Dividenden Geld verdienen
+        \n-bei Dividenden wird jährlich ein Teil des Firmengewinns an die Aktienbesitzer verteilt
+    </string>
+    <string name="anleihen_text">
+        \n-festverzinsliche Wertpapiere über vordefinierte Laufzeit
+        \n-Käufer hat das Recht auf Rückzahlung seiner Investition plus vereinbarte Zinsen
+        \n-Man muss die Anleihen aber nicht halten, sondern kann sie auch (ähnlich wie Aktien) zu einem Kurswert verkaufen
+        \n-Bestandteile von Anleihen:
+        \n      -Nennwert:	entspricht der Stückelung der Anleihe, also dem Betrag für den man sie kauft und
+			                welchen man am Ende zurück bekommt (vorausgesetzt der herausgeber der Anleihe kann bezahlen)
+        \n      -Kuponzins:	jährlicher Zins
+        \n      -Laufzeit:	feste Laufzeit bis zur Auszahlung
+    </string>
+    <string name="optionsscheine_text">
+        \n-haben ein Basisprodukt wie zB Aktien, Anleihen oder Rohstoffe
+        \n-mit dem Kauf einer Option erhält man das Recht dieses Produkt
+            zu einem bestimmten Zeitpunkt zu einem zuvor festgelegten Preis zu kaufen oder verkaufen
+	        (muss man aber nicht, ist also opional -> Option)
+        \n-unterschieden wird zwischen call und put Option
+        \n-call: wenn man davon ausgeht der Kurs wird steigen kann man das Produkt zu einem späteren Zeitpunkt für den früheren Peis (also günstiger) zu kaufen
+        \n-put: anders herum, man kann sie also bei fallendem Kurs teuer verkaufen
+    </string>
+    <string name="rohstoffe_text">
+        \n-Rohstoffe wie z.B. Öl oder Gold eignen sich auch als Investment oder Geldanlage
+        \n-man kann damit genau so handeln wie z.B. mit Aktien oder Währungen
+    </string>
+    <string name="krypto_text">
+        \n-sind eine digitale Währung, in welche man wie auch in Rohstoffe oder andere Währungen wie z.B. USD investieren beziehungsweise handeln kann.
+        \n-kein sicheres Investment, da der Preis sehr stark schwanken kann
+        \n -> deshalb hoher Gewinn/Verlust möglich
+    </string>
+
+    <string-array name="dropdown1">
+        <item>Aktien</item>
+        <item>Anleihen</item>
+        <item>Rohstoffe</item>
+        <item>Optionsscheine</item>
+        <item>Kryptowährungen</item>
+    </string-array>
 </resources>

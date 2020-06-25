@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#DA032E</color>
     <color name="buttonLabel">#FFFFFF</color>
-    <color name="darkModeText">#E80505</color>
+    <color name="darkModeText">#FDFCFC</color>
     <color name="darkModeBackground">#252525</color>
 </resources>

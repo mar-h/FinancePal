@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import androidx.room.Room
 import de.hska.financepal.db.AppDatabase
 import de.hska.financepal.db.InstrumentDao
@@ -47,8 +48,6 @@ class NewInstrumentActivity : AppCompatActivity() {
             data.putExtra("kurs", kurs)
             data.putExtra("wert", wert)
 
-
-            // db.instrumentDao().insert(Instrument(id, name, typ, kurs, wert))
             Log.wtf("NewInstrumentActivity", "Finanzinstrument: $typ $name $kurs $wert")
             instrumentDao = db.instrumentDao()
             instrumentDao.insert(Instrument(typ, name, kurs.toDouble(), wert.toDouble()))
