@@ -24,8 +24,8 @@ class InstrumentListAdapter internal constructor(
     override fun onBindViewHolder(holder: InstrumentViewHolder, position: Int) {
         holder.typ.text = instruments[position].typ
         holder.name.text = instruments[position].name
-        holder.kurs.text = instruments[position].kurs
-        holder.wert.text = instruments[position].wert
+        holder.kurs.text = instruments[position].kurs.toString()
+        holder.wert.text = instruments[position].wert.toString()
     }
 
     internal fun setInstruments(instruments: List<Instrument>) {

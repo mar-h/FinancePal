@@ -46,15 +46,12 @@ class NewInstrumentActivity : AppCompatActivity() {
             data.putExtra("name", name)
             data.putExtra("kurs", kurs)
             data.putExtra("wert", wert)
-            val id = intent.getIntExtra("id", -1)
-            if (id !=-1) {
-                data.putExtra("id", id)
-            }
+
 
             // db.instrumentDao().insert(Instrument(id, name, typ, kurs, wert))
             Log.wtf("NewInstrumentActivity", "Finanzinstrument: $typ $name $kurs $wert")
             instrumentDao = db.instrumentDao()
-            instrumentDao.insert(Instrument(typ, name, kurs, wert))
+            instrumentDao.insert(Instrument(typ, name, kurs.toDouble(), wert.toDouble()))
             setResult(Activity.RESULT_OK, data)
             startActivity(Intent(this@NewInstrumentActivity, MainActivity::class.java ))
             finish()
