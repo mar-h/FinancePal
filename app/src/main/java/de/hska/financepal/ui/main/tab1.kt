@@ -1,12 +1,18 @@
 package de.hska.financepal.ui.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import de.hska.financepal.R
+import de.hska.financepal.db.AppDatabase
+import de.hska.financepal.db.InstrumentDao
+import de.hska.financepal.db.InstrumentListAdapter
+import de.hska.financepal.entity.Instrument
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,6 +25,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class tab1 : Fragment() {
+
+    private lateinit var db: AppDatabase
+    private lateinit var instrumentDao: InstrumentDao
+    private lateinit var instruments: List<Instrument>
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -29,6 +40,7 @@ class tab1 : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -37,6 +49,22 @@ class tab1 : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tab1, container, false)
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        //Alex DB
+        activity?.applicationContext?.let {
+            db = AppDatabase.getDatabase(it)
+            instrumentDao = db.instrumentDao()
+            instruments = instrumentDao.getAllInstruments()
+            val adapter = InstrumentListAdapter(it)
+            adapter.setInstruments(instruments)
+            val recyclerView = activity?.findViewById<RecyclerView>(R.id.recycler_view)
+            recyclerView?.adapter = adapter
+            recyclerView?.layoutManager = LinearLayoutManager(it)
+        }
     }
 
     companion object {

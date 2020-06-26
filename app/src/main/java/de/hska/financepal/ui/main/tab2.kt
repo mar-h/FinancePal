@@ -7,11 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 
 import de.hska.financepal.R
+import de.hska.financepal.db.AppDatabase
+import de.hska.financepal.db.InstrumentDao
+import de.hska.financepal.entity.Instrument
+import kotlinx.android.synthetic.main.fragment_tab2.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+private lateinit var instrumentDao : InstrumentDao
+
 
 /**
  * A simple [Fragment] subclass.
@@ -39,23 +45,41 @@ class tab2 : Fragment() {
         return inflater.inflate(R.layout.fragment_tab2, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment tab2.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            tab2().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        activity?.applicationContext?.let {
+            val db = AppDatabase.getDatabase(it)
+            instrumentDao = db.instrumentDao()
+        }
+
+        button_save.setOnClickListener {
+            val typ = typ.text.toString()
+            val name = name.text.toString()
+            val kurs = kurs.text.toString()
+            val wert = wert.text.toString()
+            instrumentDao.insert(Instrument(typ, name, kurs.toDouble(), wert.toDouble()))
+
+        }
     }
+
+companion object {
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment tab2.
+     */
+    // TODO: Rename and change types and number of parameters
+    @JvmStatic
+    fun newInstance(param1: String, param2: String) =
+        tab2().apply {
+            arguments = Bundle().apply {
+                putString(ARG_PARAM1, param1)
+                putString(ARG_PARAM2, param2)
+            }
+        }
+}
 }

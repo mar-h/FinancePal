@@ -33,17 +33,14 @@ class tab3 : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tab3, container, false)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -75,12 +72,12 @@ class tab3 : Fragment() {
         }
     }
 
-   private fun changeVisibility(imageButton: ImageButton, textView: TextView){
-       TransitionManager.beginDelayedTransition(view?.parent as ViewGroup)
+    private fun changeVisibility(imageButton: ImageButton, textView: TextView){
+        TransitionManager.beginDelayedTransition(view?.parent as ViewGroup)
 
-       if(textView.visibility == View.VISIBLE){
+        if(textView.visibility == View.VISIBLE){
             textView.visibility = View.GONE
-           imageButton.setImageResource(R.drawable.ic_arrow_down)
+            imageButton.setImageResource(R.drawable.ic_arrow_down)
         }
         else{
             textView.visibility = View.VISIBLE
