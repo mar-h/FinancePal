@@ -1,5 +1,6 @@
 package de.hska.financepal.db
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -21,13 +22,26 @@ class InstrumentListAdapter internal constructor(
         return InstrumentViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: InstrumentViewHolder, position: Int) {
         holder.typ.text = instruments[position].typ
         holder.name.text = instruments[position].name
-        holder.kurs.text = instruments[position].kurs.toString()
-        holder.wert.text = instruments[position].wert.toString()
+        holder.kurs.text = "Kaufkurs: "+instruments[position].kurs.toString()
+        holder.anzahl.text = "Anzahl: "+instruments[position].anzahl.toString()
+        holder.wert.text = "Wert: "+instruments[position].wert.toString()
+        holder.curr.text = instruments[position].curr
     }
 
+    internal fun getInstrumentAtPosition(position: Int): Instrument {
+        return instruments.get(position)
+    }
+
+    internal fun removeAt(position: Int) {
+        this.instruments.toMutableList().removeAt(position)
+        instruments.toList()
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, instruments.size)
+    }
 
     internal fun setInstruments(instruments: List<Instrument>) {
         this.instruments = instruments
@@ -44,6 +58,8 @@ class InstrumentListAdapter internal constructor(
         val typ: TextView = itemView.findViewById(R.id.typ)
         val name: TextView = itemView.findViewById(R.id.name)
         val kurs: TextView = itemView.findViewById(R.id.kurs)
+        val anzahl: TextView = itemView.findViewById(R.id.anzahl)
         val wert: TextView = itemView.findViewById(R.id.wert)
+        val curr: TextView = itemView.findViewById(R.id.curr)
     }
 }

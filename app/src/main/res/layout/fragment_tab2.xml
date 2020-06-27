@@ -15,7 +15,7 @@
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Neues Finanzinstrument: "
+        android:text="@string/new_instrument"
         android:textColor="@color/darkModeText"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,35 +29,32 @@
         android:background="@color/colorPrimary"
         android:text="@string/button_save"
         android:textColor="@color/darkModeText"
-        app:layout_constraintTop_toBottomOf="@+id/wert"
+        app:layout_constraintTop_toBottomOf="@+id/curr"
         tools:layout_editor_absoluteX="32dp" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/typ"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_padding"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_bond"
-        android:inputType="textAutoComplete"
-        android:minHeight="@dimen/min_height"
-        android:textSize="18sp"
-        android:textColor="@color/darkModeText"
-        android:textColorHint="@color/darkModeText"
+        android:layout_margin="16dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:dropDownWidth="wrap_content"
+        android:entries="@array/dropdown1"
+        android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@id/textView2" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/wert"
+        android:id="@+id/anzahl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/big_padding"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_wert"
+        android:hint="@string/hint_anzahl"
         android:inputType="textAutoComplete"
         android:minHeight="@dimen/min_height"
         android:textSize="18sp"
@@ -99,5 +96,19 @@
         android:textColorHint="@color/darkModeText"
         app:layout_constraintTop_toBottomOf="@+id/typ"
         tools:layout_editor_absoluteX="16dp" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/curr"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:dropDownWidth="wrap_content"
+        android:entries="@array/dropdown2"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/anzahl" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

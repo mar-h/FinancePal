@@ -9,7 +9,7 @@ import de.hska.financepal.entity.Instrument
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Instrument::class], version = 1, exportSchema = false)
+@Database(entities = [Instrument::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun instrumentDao(): InstrumentDao

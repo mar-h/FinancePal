@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.hska.financepal.R
 import de.hska.financepal.db.AppDatabase
 import de.hska.financepal.db.InstrumentDao
 import de.hska.financepal.db.InstrumentListAdapter
+import de.hska.financepal.db.SwipeToDeleteCallback
 import de.hska.financepal.entity.Instrument
 
 // TODO: Rename parameter arguments, choose names that match
@@ -54,7 +56,7 @@ class tab1 : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        //Alex DB
+        //Alex' Room-DB und RecyclerView
         activity?.applicationContext?.let {
             db = AppDatabase.getDatabase(it)
             instrumentDao = db.instrumentDao()
@@ -64,6 +66,14 @@ class tab1 : Fragment() {
             val recyclerView = activity?.findViewById<RecyclerView>(R.id.recycler_view)
             recyclerView?.adapter = adapter
             recyclerView?.layoutManager = LinearLayoutManager(it)
+            val swipeHandler = object : SwipeToDeleteCallback(it) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    adapter.removeAt(viewHolder.adapterPosition)
+                }
+            }
+
+            val itemTouchHelper = ItemTouchHelper(swipeHandler)
+            itemTouchHelper.attachToRecyclerView(recyclerView)
         }
     }
 

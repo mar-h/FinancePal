@@ -1,11 +1,8 @@
 package de.hska.financepal.entity
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import java.util.*
 
 @Entity(tableName = "Inst")
 data class Instrument(
@@ -18,20 +15,22 @@ data class Instrument(
 
     // val kaufwert: Double?,
 
-    // val anzahl: Int?,
+    @ColumnInfo(name = "anzahl")
+    val anzahl: Int,
 
     @ColumnInfo(name = "kurs")
-    val kurs: Double?,
+    val kurs: Double,
 
-    @ColumnInfo(name = "wert")
-    val wert: Double?
-
-    // val curr: String?,
+    @ColumnInfo(name = "waehrung")
+    val curr: String?
 
     // val rendite: Double?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
+
+    @ColumnInfo(name = "wert")
+    var wert: Double = kurs * anzahl
 
     override fun equals(other: Any?): Boolean {
         return super.equals(other)

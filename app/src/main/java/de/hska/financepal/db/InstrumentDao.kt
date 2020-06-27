@@ -1,10 +1,7 @@
 package de.hska.financepal.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import de.hska.financepal.entity.Instrument
 
 @Dao
@@ -21,4 +18,7 @@ interface InstrumentDao {
 
     @Query("DELETE FROM INST")
     fun deleteAll()
+
+    @Delete
+    fun delete(instrument: Instrument)
 }

@@ -1,11 +1,13 @@
 package de.hska.financepal.ui.main
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import com.google.android.material.snackbar.Snackbar
 import de.hska.financepal.R
 import de.hska.financepal.db.AppDatabase
 import de.hska.financepal.db.InstrumentDao
@@ -54,12 +56,14 @@ class tab2 : Fragment() {
         }
 
         button_save.setOnClickListener {
-            val typ = typ.text.toString()
+            val typ = typ.getSelectedItem().toString()
             val name = name.text.toString()
+            val anzahl = anzahl.text.toString()
             val kurs = kurs.text.toString()
-            val wert = wert.text.toString()
-            instrumentDao.insert(Instrument(typ, name, kurs.toDouble(), wert.toDouble()))
-
+            val curr = curr.getSelectedItem().toString()
+            instrumentDao.insert(Instrument(typ, name, anzahl.toInt(), kurs.toDouble(), curr))
+            Snackbar.make(it, "Neues Finanzinstrument hinzugefügt!", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
         }
     }
 

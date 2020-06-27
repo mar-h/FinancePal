@@ -8,7 +8,9 @@
     <string name="hint_name">Bezeichnung</string>
     <string name="hint_kurs">Kurs</string>
     <string name="hint_wert">Wert</string>
-    <string name="button_save">Save</string>
+    <string name="hint_anzahl">Anzahl</string>
+    <string name="button_save">Speichern</string>
+    <string name="new_instrument">Neues Finanzinstrument: </string>
     <string name="empty_not_saved">Instrument nicht gespeichert, weil es leer ist.</string>
 
     <!-- TODO: Hier können zentral Strings definiert werden -->
@@ -66,5 +68,13 @@
         <item>Rohstoffe</item>
         <item>Optionsscheine</item>
         <item>Kryptowährungen</item>
+    </string-array>
+    <string-array name="dropdown2">
+        <item>EUR</item>
+        <item>USD</item>
+        <item>CAD</item>
+        <item>CNY</item>
+        <item>RUB</item>
+        <item>JPY</item>
     </string-array>
 </resources>
