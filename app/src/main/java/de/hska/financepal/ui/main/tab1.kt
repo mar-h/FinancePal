@@ -31,6 +31,7 @@ class tab1 : Fragment() {
     private lateinit var db: AppDatabase
     private lateinit var instrumentDao: InstrumentDao
     private lateinit var instruments: List<Instrument>
+    private lateinit var adapter: InstrumentListAdapter
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -38,10 +39,6 @@ class tab1 : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
 
     }
 
@@ -61,7 +58,7 @@ class tab1 : Fragment() {
             db = AppDatabase.getDatabase(it)
             instrumentDao = db.instrumentDao()
             instruments = instrumentDao.getAllInstruments()
-            val adapter = InstrumentListAdapter(it)
+            adapter = InstrumentListAdapter(it)
             adapter.setInstruments(instruments)
             val recyclerView = activity?.findViewById<RecyclerView>(R.id.recycler_view)
             recyclerView?.adapter = adapter
@@ -69,12 +66,15 @@ class tab1 : Fragment() {
             val swipeHandler = object : SwipeToDeleteCallback(it) {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     adapter.removeAt(viewHolder.adapterPosition)
+                    instrumentDao.delete(adapter.getInstrumentAtPosition(0))
+                    adapter.setInstruments(instrumentDao.getAllInstruments())
                 }
             }
-
             val itemTouchHelper = ItemTouchHelper(swipeHandler)
             itemTouchHelper.attachToRecyclerView(recyclerView)
         }
+
+
     }
 
     companion object {

@@ -19,7 +19,7 @@ data class Instrument(
     val anzahl: Int,
 
     @ColumnInfo(name = "kurs")
-    val kurs: Double,
+    var kurs: Double,
 
     @ColumnInfo(name = "waehrung")
     val curr: String?

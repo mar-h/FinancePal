@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.hska.financepal.R
 import de.hska.financepal.entity.Instrument
+import kotlin.math.round
+import kotlin.random.Random.Default.nextDouble
 
 class InstrumentListAdapter internal constructor(
     context: Context
@@ -26,7 +28,7 @@ class InstrumentListAdapter internal constructor(
     override fun onBindViewHolder(holder: InstrumentViewHolder, position: Int) {
         holder.typ.text = instruments[position].typ
         holder.name.text = instruments[position].name
-        holder.kurs.text = "Kaufkurs: "+instruments[position].kurs.toString()
+        holder.kurs.text = "Kurs: "+instruments[position].kurs.toString()
         holder.anzahl.text = "Anzahl: "+instruments[position].anzahl.toString()
         holder.wert.text = "Wert: "+instruments[position].wert.toString()
         holder.curr.text = instruments[position].curr
@@ -38,15 +40,28 @@ class InstrumentListAdapter internal constructor(
 
     internal fun removeAt(position: Int) {
         this.instruments.toMutableList().removeAt(position)
-        instruments.toList()
+        this.instruments.toList()
         notifyItemRemoved(position)
-        notifyItemRangeChanged(position, instruments.size)
+        notifyDataSetChanged()
     }
 
     internal fun setInstruments(instruments: List<Instrument>) {
         this.instruments = instruments
         notifyDataSetChanged()
     }
+
+    internal fun update(instruments: List<Instrument>) {
+        this.instruments = instruments
+        this.instruments.forEach { instrument: Instrument ->
+            instrument.kurs = instrument.kurs+ round(nextDouble(8.00)*100)/100
+        }
+        notifyDataSetChanged()
+    }
+
+    internal fun refresh() {
+        notifyDataSetChanged()
+    }
+
     internal fun setInstrument(instrument: Instrument) {
         this.instruments.toMutableList().add(instrument)
         notifyItemInserted(instruments.size -1)
