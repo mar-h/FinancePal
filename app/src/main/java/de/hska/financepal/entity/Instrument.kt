@@ -3,6 +3,7 @@ package de.hska.financepal.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlin.math.round
 
 @Entity(tableName = "Inst")
 data class Instrument(
@@ -30,7 +31,7 @@ data class Instrument(
     var id: Int = 0
 
     @ColumnInfo(name = "wert")
-    var wert: Double = kurs * anzahl
+    var wert: Double = round(kurs * anzahl *100)/100
 
     override fun equals(other: Any?): Boolean {
         return super.equals(other)

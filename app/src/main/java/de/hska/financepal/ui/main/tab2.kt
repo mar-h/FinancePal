@@ -61,9 +61,26 @@ class tab2 : Fragment() {
             val anzahl = anzahl.text.toString()
             val kurs = kurs.text.toString()
             val curr = curr.getSelectedItem().toString()
-            instrumentDao.insert(Instrument(typ, name, anzahl.toInt(), kurs.toDouble(), curr))
-            Snackbar.make(it, "Neues Finanzinstrument hinzugefügt!", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val pattern = "\\d+".toRegex()
+
+            fun isInt(string: String) : Boolean {
+                return string.matches(pattern)
+            }
+
+            fun isDouble(string: String) : Boolean {
+                return !string.matches(pattern)
+            }
+
+            if (isInt(anzahl)==true && isDouble(kurs)==true) {
+                instrumentDao.insert(Instrument(typ, name, anzahl.toInt(), kurs.toDouble(), curr))
+                Snackbar.make(it, "Neues Finanzinstrument hinzugefügt!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+            }
+            else {
+                Snackbar.make(it, "Fehler beim Hinzufügen! Datenformat kontrollieren", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+            }
+
         }
     }
 
