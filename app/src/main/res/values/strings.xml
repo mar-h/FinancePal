@@ -6,12 +6,14 @@
     <string name="add_bond">Bonds</string>
     <string name="hint_bond">Aktie,…</string>
     <string name="hint_name">Bezeichnung</string>
-    <string name="hint_kurs">Kurs</string>
+    <string name="hint_kurs">Kurs (zb. 10.00)</string>
     <string name="hint_wert">Wert</string>
     <string name="hint_anzahl">Anzahl</string>
     <string name="button_save">Speichern</string>
     <string name="new_instrument">Neues Finanzinstrument: </string>
     <string name="empty_not_saved">Instrument nicht gespeichert, weil es leer ist.</string>
+
+    <string name="Kontostand">Kontostand:</string>
 
     <!-- TODO: Hier können zentral Strings definiert werden -->
 
@@ -37,7 +39,7 @@
         \n-Festverzinsliche Wertpapiere über vordefinierte Laufzeit
         \n-Der Käufer hat das Recht auf Rückzahlung seiner Investition plus vereinbarte Zinsen
         \n-Man muss die Anleihen aber nicht halten, sondern kann sie auch (ähnlich wie Aktien) zu einem Kurswert verkaufen
-        \n-Bestandteile von Anleihen:
+        \n\n-Bestandteile von Anleihen:
         \n      -Nennwert:	entspricht der Stückelung der Anleihe, also dem Betrag für den man sie kauft und
 			                welchen man am Ende zurück bekommt (vorausgesetzt der herausgeber der Anleihe kann bezahlen)
         \n      -Kuponzins:	jährlicher Zins
@@ -54,7 +56,7 @@
         \n-Bei Optionsscheinen wirkt ein Hebeleffekt: Durch geringen Kapitaleinsatz kann ein großer Gewinn erzielt werden.
     </string>
     <string name="rohstoffe_text">
-        \n-Rohstoffe wie z.B. Öl oder Gold eignen sich auch als Investment oder Geldanlage
+        \n-Rohstoffe wie z.B. Öl oder Gold eignen sich auch als Investment oder Geldanlage und können wie Aktien zu einem Kurs gehandelt werden.
     </string>
     <string name="krypto_text">
         \n-Kryptowährungen sind digitale Währungen

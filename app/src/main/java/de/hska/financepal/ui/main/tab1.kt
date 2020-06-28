@@ -1,10 +1,12 @@
 package de.hska.financepal.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -16,6 +18,9 @@ import de.hska.financepal.db.InstrumentDao
 import de.hska.financepal.db.InstrumentListAdapter
 import de.hska.financepal.db.SwipeToDeleteCallback
 import de.hska.financepal.entity.Instrument
+import kotlinx.android.synthetic.main.fragment_tab2.*
+import kotlinx.android.synthetic.main.instrument_row.*
+import kotlin.math.round
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,7 +75,6 @@ class tab1 : Fragment() {
 
         return rootView
     }
-
 
     override fun onResume() {
         super.onResume()
