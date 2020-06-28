@@ -27,15 +27,15 @@
     <string name="anlegen">Please specify the product you want to add:</string>
 
     <string name="aktien_text">
-        \n-Anteil eines Unternehmens (Aktiengesellschaft) je nach dem wie viele Aktien ausgeschüttet werden
+        \n-Anteil eines Unternehmens (Aktiengesellschaft)
         \n-Wert der Aktie entspricht dem Kurs
-        \n-Kurs ist durch Angebot und Nachfrage bestimmt
-        \n-man kann entweder durch steigende Kurse oder durch Dividenden Geld verdienen
-        \n-bei Dividenden wird jährlich ein Teil des Firmengewinns an die Aktienbesitzer verteilt
+        \n-Der Kurs wird durch Angebot und Nachfrage bestimmt
+        \n-Steigende Kurse und Dividenden führen zu Gewinn
+        \n-Dividenden: jährlich wird ein Teil des Firmengewinns an die Aktienbesitzer verteilt
     </string>
     <string name="anleihen_text">
-        \n-festverzinsliche Wertpapiere über vordefinierte Laufzeit
-        \n-Käufer hat das Recht auf Rückzahlung seiner Investition plus vereinbarte Zinsen
+        \n-Festverzinsliche Wertpapiere über vordefinierte Laufzeit
+        \n-Der Käufer hat das Recht auf Rückzahlung seiner Investition plus vereinbarte Zinsen
         \n-Man muss die Anleihen aber nicht halten, sondern kann sie auch (ähnlich wie Aktien) zu einem Kurswert verkaufen
         \n-Bestandteile von Anleihen:
         \n      -Nennwert:	entspricht der Stückelung der Anleihe, also dem Betrag für den man sie kauft und
@@ -44,22 +44,25 @@
         \n      -Laufzeit:	feste Laufzeit bis zur Auszahlung
     </string>
     <string name="optionsscheine_text">
-        \n-haben ein Basisprodukt wie zB Aktien, Anleihen oder Rohstoffe
-        \n-mit dem Kauf einer Option erhält man das Recht dieses Produkt
+        \n-Ein Optionsschein hat ein Basisprodukt wie zB Aktien, Anleihen oder Rohstoffe
+        \n-Mit dem Kauf einer Option erhält man das Recht dieses Produkt
             zu einem bestimmten Zeitpunkt zu einem zuvor festgelegten Preis zu kaufen oder verkaufen
 	        (muss man aber nicht, ist also opional -> Option)
-        \n-unterschieden wird zwischen call und put Option
-        \n-call: wenn man davon ausgeht der Kurs wird steigen kann man das Produkt zu einem späteren Zeitpunkt für den früheren Peis (also günstiger) zu kaufen
-        \n-put: anders herum, man kann sie also bei fallendem Kurs teuer verkaufen
+        \n-Es gibt Call- und Put-Optionsscheine
+        \n-Call: Wenn man davon ausgeht, dass der Kurs steigen wird, kann man das Produkt zu einem späteren Zeitpunkt für einen günstiger Preis zu kaufen
+        \n-Put: Man kann das Produkt im Falle eines fallenden Kurses teuer verkaufen
+        \n-Bei Optionsscheinen wirkt ein Hebeleffekt: Durch geringen Kapitaleinsatz kann ein großer Gewinn erzielt werden.
     </string>
     <string name="rohstoffe_text">
         \n-Rohstoffe wie z.B. Öl oder Gold eignen sich auch als Investment oder Geldanlage
-        \n-man kann damit genau so handeln wie z.B. mit Aktien oder Währungen
     </string>
     <string name="krypto_text">
-        \n-sind eine digitale Währung, in welche man wie auch in Rohstoffe oder andere Währungen wie z.B. USD investieren beziehungsweise handeln kann.
-        \n-kein sicheres Investment, da der Preis sehr stark schwanken kann
-        \n -> deshalb hoher Gewinn/Verlust möglich
+        \n-Kryptowährungen sind digitale Währungen
+        \n-Mit Kryptowährungen können Produkte oder Dienste im Internet bezahlt werden.
+        \n-Durch oft sehr volatile Wertentwicklungen kann größerer Gewinn erzielt werden.
+        \n-Kein sicheres Anlageinstrument
+        \n-setzt hohe Risikobereitschaft voraus
+        \n-Beispiele: Bitcoin, Ethereum, Ripple, Litecoin
     </string>
 
     <string-array name="dropdown1">
