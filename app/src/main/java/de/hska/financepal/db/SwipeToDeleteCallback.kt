@@ -68,8 +68,8 @@ abstract class SwipeToDeleteCallback(context: Context) : ItemTouchHelper.SimpleC
         // Calculate position of delete icon
         val deleteIconTop = itemView.top + (itemHeight - intrinsicHeight) / 2
         val deleteIconMargin = (itemHeight - intrinsicHeight) / 2
-        val deleteIconRight = itemView.left - deleteIconMargin - intrinsicWidth
-        val deleteIconLeft = itemView.left - deleteIconMargin
+        val deleteIconRight = deleteIconMargin - intrinsicWidth - itemView.left
+        val deleteIconLeft = deleteIconMargin - itemView.left
         val deleteIconBottom = deleteIconTop + intrinsicHeight
 
         // Draw the delete icon

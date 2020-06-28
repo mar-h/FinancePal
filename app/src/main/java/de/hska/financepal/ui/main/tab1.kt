@@ -1,6 +1,7 @@
 package de.hska.financepal.ui.main
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,10 +34,6 @@ class tab1 : Fragment() {
     private lateinit var instruments: List<Instrument>
     private lateinit var adapter: InstrumentListAdapter
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,35 +44,49 @@ class tab1 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_tab1, container, false)
+
+        //Alex' Room-DB und RecyclerView
+
+        db = AppDatabase.getDatabase(rootView.context)
+        instrumentDao = db.instrumentDao()
+
+        instruments = instrumentDao.getAllInstruments()
+        adapter = InstrumentListAdapter(rootView.context)
+        adapter.setInstruments(instruments)
+        val recyclerView = rootView.findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = adapter
+
+        val swipeHandler = object : SwipeToDeleteCallback(rootView.context) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                adapter.removeAt(viewHolder.adapterPosition)
+                instrumentDao.delete(adapter.getInstrumentAtPosition(viewHolder.adapterPosition+1))
+                adapter.setInstruments(instrumentDao.getAllInstruments())
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+
+        return rootView
     }
 
 
     override fun onResume() {
         super.onResume()
-        //Alex' Room-DB und RecyclerView
-        activity?.applicationContext?.let {
-            db = AppDatabase.getDatabase(it)
-            instrumentDao = db.instrumentDao()
-            instruments = instrumentDao.getAllInstruments()
-            adapter = InstrumentListAdapter(it)
-            adapter.setInstruments(instruments)
-            val recyclerView = activity?.findViewById<RecyclerView>(R.id.recycler_view)
-            recyclerView?.adapter = adapter
-            recyclerView?.layoutManager = LinearLayoutManager(it)
-            val swipeHandler = object : SwipeToDeleteCallback(it) {
-                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    adapter.removeAt(viewHolder.adapterPosition)
-                    instrumentDao.delete(adapter.getInstrumentAtPosition(0))
-                    adapter.setInstruments(instrumentDao.getAllInstruments())
-                }
-            }
-            val itemTouchHelper = ItemTouchHelper(swipeHandler)
-            itemTouchHelper.attachToRecyclerView(recyclerView)
-        }
 
+        val handler = Handler()
+        val runnable = object: Runnable {
+            override fun run() {
+                adapter.update(instrumentDao.getAllInstruments())
+            }
+        }
+        handler.postDelayed(runnable, 1000)
 
     }
+
+
+
 
     companion object {
         /**
