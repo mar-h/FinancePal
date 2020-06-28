@@ -13,6 +13,8 @@
     <string name="new_instrument">Neues Finanzinstrument: </string>
     <string name="empty_not_saved">Instrument nicht gespeichert, weil es leer ist.</string>
 
+    <string name="Kontostand">Kontostand:</string>
+
     <!-- TODO: Hier können zentral Strings definiert werden -->
 
     <string name="inhalt1">Hier jeweils den Inhalt einfügen (Tab 1 Overview)</string>

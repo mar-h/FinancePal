@@ -1,18 +1,23 @@
 package de.hska.financepal.ui.main
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import de.hska.financepal.R
 import de.hska.financepal.db.AppDatabase
 import de.hska.financepal.db.InstrumentDao
 import de.hska.financepal.entity.Instrument
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_tab2.*
+import kotlin.math.round
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,10 +76,28 @@ class tab2 : Fragment() {
                 return !string.matches(pattern)
             }
 
-            if (isInt(anzahl)==true && isDouble(kurs)==true) {
-                instrumentDao.insert(Instrument(typ, name, anzahl.toInt(), kurs.toDouble(), curr))
+            if (isInt(anzahl) && isDouble(kurs)) {
+
+                val prefs = activity?.getSharedPreferences("financePal", Context.MODE_PRIVATE)
+                prefs?.let {
+
+                    val currentBalance = prefs.getFloat("balance",500000.00F)
+                    val cost = (round(kurs.toDouble() * anzahl.toInt() *100) /100).toFloat()
+                    if(cost > currentBalance){
+                        Snackbar.make(requireView(), "Sie haben nicht genug Geld!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show()
+                    }
+                    else{
+                        val newBalance: Float = (currentBalance - cost)
+                        prefs.edit().putFloat("balance",newBalance).apply()
+                        instrumentDao.insert(Instrument(typ, name, anzahl.toInt(), kurs.toDouble(), curr))
+
+                        activity?.findViewById<TextView>(R.id.textViewKontostand)?.text = newBalance.toString()
+                    }
+                }
                 Snackbar.make(it, "Neues Finanzinstrument hinzugefügt!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+
             }
             else {
                 Snackbar.make(it, "Fehler beim Hinzufügen! Datenformat kontrollieren", Snackbar.LENGTH_LONG)

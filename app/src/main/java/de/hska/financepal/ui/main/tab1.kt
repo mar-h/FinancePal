@@ -1,9 +1,11 @@
 package de.hska.financepal.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -15,6 +17,9 @@ import de.hska.financepal.db.InstrumentDao
 import de.hska.financepal.db.InstrumentListAdapter
 import de.hska.financepal.db.SwipeToDeleteCallback
 import de.hska.financepal.entity.Instrument
+import kotlinx.android.synthetic.main.fragment_tab2.*
+import kotlinx.android.synthetic.main.instrument_row.*
+import kotlin.math.round
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,7 +55,6 @@ class tab1 : Fragment() {
         return inflater.inflate(R.layout.fragment_tab1, container, false)
     }
 
-
     override fun onResume() {
         super.onResume()
         //Alex' Room-DB und RecyclerView
@@ -65,15 +69,25 @@ class tab1 : Fragment() {
             recyclerView?.layoutManager = LinearLayoutManager(it)
             val swipeHandler = object : SwipeToDeleteCallback(it) {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    adapter.removeAt(viewHolder.adapterPosition)
-                    instrumentDao.delete(adapter.getInstrumentAtPosition(0))
-                    adapter.setInstruments(instrumentDao.getAllInstruments())
+                    val prefs = activity?.getSharedPreferences("financePal", Context.MODE_PRIVATE)
+                    prefs?.let {
+
+                        val currentBalance = prefs.getFloat("balance",500000.00F);
+                        val newBalance = (currentBalance + adapter.getInstrumentAtPosition(viewHolder.position).wert).toFloat()
+                        prefs.edit().putFloat("balance",newBalance).apply()
+                        activity?.findViewById<TextView>(R.id.textViewKontostand)?.text = newBalance.toString()
+
+                        instrumentDao.delete(adapter.getInstrumentAtPosition(viewHolder.position))
+                        adapter.removeAt(viewHolder.position)
+                        adapter.setInstruments(instrumentDao.getAllInstruments())
+                    }
+
+
                 }
             }
             val itemTouchHelper = ItemTouchHelper(swipeHandler)
             itemTouchHelper.attachToRecyclerView(recyclerView)
         }
-
 
     }
 

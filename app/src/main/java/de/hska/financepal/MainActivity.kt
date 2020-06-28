@@ -1,6 +1,10 @@
 package de.hska.financepal
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.TestLooperManager
+import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -10,6 +14,7 @@ import de.hska.financepal.db.AppDatabase
 import de.hska.financepal.db.InstrumentDao
 import de.hska.financepal.entity.Instrument
 import de.hska.financepal.ui.main.SectionsPagerAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +25,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val prefs = this.getSharedPreferences("financePal", Context.MODE_PRIVATE)
+        val Kontostand : Double = prefs.getFloat("balance",500000.00F).toDouble()
+        textViewKontostand.text = Kontostand.toString()
 
         //Tabs
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
