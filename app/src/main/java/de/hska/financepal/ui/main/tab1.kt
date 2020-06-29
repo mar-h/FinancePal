@@ -55,7 +55,6 @@ class tab1 : Fragment() {
 
         db = AppDatabase.getDatabase(rootView.context)
         instrumentDao = db.instrumentDao()
-
         instruments = instrumentDao.getAllInstruments()
         adapter = InstrumentListAdapter(rootView.context)
         adapter.setInstruments(instruments)
@@ -65,9 +64,19 @@ class tab1 : Fragment() {
 
         val swipeHandler = object : SwipeToDeleteCallback(rootView.context) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                adapter.removeAt(viewHolder.adapterPosition)
-                instrumentDao.delete(adapter.getInstrumentAtPosition(viewHolder.adapterPosition+1))
-                adapter.setInstruments(instrumentDao.getAllInstruments())
+
+                val prefs = activity?.getSharedPreferences("financePal", Context.MODE_PRIVATE)
+                prefs?.let {
+
+                    val currentBalance = round(prefs.getFloat("balance",500000.00F)*100)/100
+                    val newBalance = (currentBalance + round(adapter.getInstrumentAtPosition(viewHolder.position).kurswert*100)/100).toFloat()
+                    prefs.edit().putFloat("balance",newBalance).apply()
+                    activity?.findViewById<TextView>(R.id.textViewKontostand)?.text = newBalance.toString()
+
+                    instrumentDao.delete(adapter.getInstrumentAtPosition(viewHolder.position))
+                    adapter.removeAt(viewHolder.position)
+                    adapter.setInstruments(instrumentDao.getAllInstruments())
+                }
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)

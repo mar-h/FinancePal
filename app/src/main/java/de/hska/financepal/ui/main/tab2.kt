@@ -86,14 +86,15 @@ class tab2 : Fragment() {
                     if(cost > currentBalance){
                         Snackbar.make(requireView(), "Sie haben nicht genug Geld!", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show()
+                        return@setOnClickListener
                     }
-                    else{
-                        val newBalance: Float = (currentBalance - cost)
-                        prefs.edit().putFloat("balance",newBalance).apply()
-                        instrumentDao.insert(Instrument(typ, name, anzahl.toInt(), kurs.toDouble(), curr))
 
-                        activity?.findViewById<TextView>(R.id.textViewKontostand)?.text = newBalance.toString()
-                    }
+                    val newBalance: Float = (currentBalance - cost)
+                    prefs.edit().putFloat("balance",newBalance).apply()
+                    instrumentDao.insert(Instrument(typ, name, anzahl.toInt(), kurs.toDouble(), curr))
+
+                    activity?.findViewById<TextView>(R.id.textViewKontostand)?.text = newBalance.toString()
+
                 }
                 Snackbar.make(it, "Neues Finanzinstrument hinzugefügt!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
