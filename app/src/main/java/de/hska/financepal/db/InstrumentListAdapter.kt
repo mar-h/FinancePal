@@ -26,12 +26,15 @@ class InstrumentListAdapter internal constructor(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: InstrumentViewHolder, position: Int) {
-        holder.typ.text = instruments[position].typ
-        holder.name.text = instruments[position].name
-        holder.kurs.text = "Kurs: "+instruments[position].kurs.toString()
+        val currency = " "+instruments[position].curr
+
+        holder.typ.text = instruments[position].typ + " "+ instruments[position].name
+        holder.kurs.text = "Kurs: "+instruments[position].kurs.toString()+currency
         holder.anzahl.text = "Anzahl: "+instruments[position].anzahl.toString()
-        holder.wert.text = "Wert: "+instruments[position].wert.toString()
-        holder.curr.text = instruments[position].curr
+        holder.wert.text = "Kaufwert: "+instruments[position].wert.toString()+currency
+        holder.kurswert.text = "Kurswert: "+instruments[position].kurswert.toString()+currency
+        holder.gewinn.text = "Gewinn/Verlust: "+instruments[position].gewinn.toString()+currency
+        holder.rendite.text = "Rendite: "+instruments[position].rendite.toString()+" %"
     }
 
     internal fun getInstrumentAtPosition(position: Int): Instrument {
@@ -53,8 +56,10 @@ class InstrumentListAdapter internal constructor(
     internal fun update(instruments: List<Instrument>) {
         this.instruments = instruments
         this.instruments.forEach { instrument: Instrument ->
-            instrument.kurs = instrument.kurs+ round(nextDouble(8.00)*100)/100.0
-            instrument.kurswert = instrument.anzahl * instrument.kurs
+            instrument.kurs = instrument.kurs+ round(nextDouble(8.00)*100)/100
+            instrument.kurswert = round((instrument.kurs*instrument.anzahl)*100)/100
+            instrument.gewinn = round((instrument.kurswert-instrument.wert)*100)/100
+            instrument.rendite = round((instrument.gewinn/instrument.wert)*100)/100*100
         }
         notifyDataSetChanged()
     }
@@ -72,10 +77,11 @@ class InstrumentListAdapter internal constructor(
 
     inner class InstrumentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val typ: TextView = itemView.findViewById(R.id.typ)
-        val name: TextView = itemView.findViewById(R.id.name)
         val kurs: TextView = itemView.findViewById(R.id.kurs)
         val anzahl: TextView = itemView.findViewById(R.id.anzahl)
+        val kurswert: TextView = itemView.findViewById(R.id.kurswert)
         val wert: TextView = itemView.findViewById(R.id.wert)
-        val curr: TextView = itemView.findViewById(R.id.curr)
+        val gewinn: TextView = itemView.findViewById(R.id.gewinn)
+        val rendite: TextView = itemView.findViewById(R.id.rendite)
     }
 }

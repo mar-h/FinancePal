@@ -75,18 +75,20 @@ class tab1 : Fragment() {
 
         return rootView
     }
+    val handler = Handler()
+
+    fun startTimer() {
+        handler.postDelayed(Runnable { runnable() }, 5000)
+    }
+
+    fun runnable() {
+        adapter.update(instrumentDao.getAllInstruments())
+        handler.postDelayed(Runnable { runnable() }, 10000)
+    }
 
     override fun onResume() {
         super.onResume()
-
-        val handler = Handler()
-        val runnable = object: Runnable {
-            override fun run() {
-                adapter.update(instrumentDao.getAllInstruments())
-            }
-        }
-        handler.postDelayed(runnable, 1000)
-
+        runnable()
     }
 
 

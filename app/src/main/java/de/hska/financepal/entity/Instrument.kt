@@ -7,14 +7,11 @@ import kotlin.math.round
 
 @Entity(tableName = "Inst")
 data class Instrument(
-    // val isin: String?,
     @ColumnInfo(name = "typ")
     val typ: String?,
 
     @ColumnInfo(name = "name")
     val name: String?,
-
-    // val kaufwert: Double?,
 
     @ColumnInfo(name = "anzahl")
     val anzahl: Int,
@@ -25,13 +22,21 @@ data class Instrument(
     @ColumnInfo(name = "waehrung")
     val curr: String?
 
-    // val rendite: Double?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 
+    @ColumnInfo(name = "kurswert")
+    var kurswert: Double = round(kurs * anzahl *100)/100
+
     @ColumnInfo(name = "wert")
     var wert: Double = round(kurs * anzahl *100)/100
+
+    @ColumnInfo(name = "gewinn")
+    var gewinn: Double = round(kurswert-wert)
+
+    @ColumnInfo(name = "rendite")
+    var rendite: Double = round(gewinn/wert *100)/100*100
 
     override fun equals(other: Any?): Boolean {
         return super.equals(other)

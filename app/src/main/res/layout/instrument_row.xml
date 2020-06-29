@@ -19,12 +19,6 @@
         android:textSize="14sp"/>
 
     <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/buttonLabel"
-        android:textSize="14sp" />
-    <TextView
         android:id="@+id/kurs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +37,19 @@
         android:textColor="@color/buttonLabel"
         android:textSize="14sp"/>
     <TextView
-        android:id="@+id/curr"
+        android:id="@+id/kurswert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/buttonLabel"
+        android:textSize="14sp"/>
+    <TextView
+        android:id="@+id/gewinn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/buttonLabel"
+        android:textSize="14sp"/>
+    <TextView
+        android:id="@+id/rendite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/buttonLabel"
