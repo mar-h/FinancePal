@@ -56,7 +56,7 @@ class InstrumentListAdapter internal constructor(
     internal fun update(instruments: List<Instrument>) {
         this.instruments = instruments
         this.instruments.forEach { instrument: Instrument ->
-            instrument.kurs = instrument.kurs+ round(nextDouble(8.00)*100)/100
+            instrument.kurs = instrument.kurs+ round(nextDouble(-10.00,10.00)*100)/100
             instrument.kurswert = round((instrument.kurs*instrument.anzahl)*100)/100
             instrument.gewinn = round((instrument.kurswert-instrument.wert)*100)/100
             instrument.rendite = round((instrument.gewinn/instrument.wert)*100)/100*100
