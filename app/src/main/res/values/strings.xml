@@ -49,10 +49,10 @@
         \n-Ein Optionsschein hat ein Basisprodukt wie zB Aktien, Anleihen oder Rohstoffe
         \n-Mit dem Kauf einer Option erhält man das Recht dieses Produkt
             zu einem bestimmten Zeitpunkt zu einem zuvor festgelegten Preis zu kaufen oder verkaufen
-	        (muss man aber nicht, ist also opional -> Option)
+	        (muss man aber nicht, ist also optional -> Option)
         \n-Es gibt Call- und Put-Optionsscheine
-        \n-Call: Wenn man davon ausgeht, dass der Kurs steigen wird, kann man das Produkt zu einem späteren Zeitpunkt für einen günstiger Preis zu kaufen
-        \n-Put: Man kann das Produkt im Falle eines fallenden Kurses teuer verkaufen
+        \n-Call: Wenn man davon ausgeht, dass der Kurs steigen wird, kann man das Produkt zu einem späteren Zeitpunkt für einen günstigeren Preis zu kaufen
+        \n-Put: Man kann das Produkt im Falle eines fallenden Kurses teuerer verkaufen
         \n-Bei Optionsscheinen wirkt ein Hebeleffekt: Durch geringen Kapitaleinsatz kann ein großer Gewinn erzielt werden.
     </string>
     <string name="rohstoffe_text">
@@ -60,8 +60,8 @@
     </string>
     <string name="krypto_text">
         \n-Kryptowährungen sind digitale Währungen
-        \n-Mit Kryptowährungen können Produkte oder Dienste im Internet bezahlt werden.
-        \n-Durch oft sehr volatile Wertentwicklungen kann größerer Gewinn erzielt werden.
+        \n-Mit Kryptowährungen können Produkte oder Dienste im Internet bezahlt werden
+        \n-Durch oft sehr volatile Wertentwicklungen kann größerer Gewinn erzielt werden
         \n-Kein sicheres Anlageinstrument
         \n-setzt hohe Risikobereitschaft voraus
         \n-Beispiele: Bitcoin, Ethereum, Ripple, Litecoin

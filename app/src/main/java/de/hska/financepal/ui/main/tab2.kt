@@ -1,25 +1,20 @@
 package de.hska.financepal.ui.main
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import de.hska.financepal.R
 import de.hska.financepal.db.AppDatabase
 import de.hska.financepal.db.InstrumentDao
 import de.hska.financepal.entity.Instrument
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_tab2.*
 import kotlin.math.round
 
-// TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -32,7 +27,6 @@ private lateinit var instrumentDao : InstrumentDao
  * create an instance of this fragment.
  */
 class tab2 : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
